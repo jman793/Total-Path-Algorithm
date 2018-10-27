@@ -1,5 +1,5 @@
 #this file will be the driver program used for all three of the algorithms proposed
-
+from Algorithms import basic_recursion
 
 N=10
 #This will define a grid of size NxN
@@ -21,3 +21,4 @@ def print_grid(G):
         print G[i]
 
 print_grid(Grid)
+print basic_recursion(Grid,0,0)
