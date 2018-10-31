@@ -17,3 +17,25 @@ def basic_recursion(G,i,j):
         return 0
     else:
         return basic_recursion(G,i+1,j)+basic_recursion(G,i,j+1)
+    
+ def memoized(i,j,V,ctr):
+    if V[i][j]!=q:
+        return V[i][j]
+    if i==n-1 and j==n-1 and V[i][j]!=q:
+        V[i][j]=V[i-1][j]+V[i][j-1]
+        return V[i][j]
+    if i==n-1 and V[i][j]!=q:
+        V[i][j]=V[i-1][j]+1
+        return V[i][j]
+    elif i==n-1:
+        V[i][j]=1
+        return V[i][j]
+    if j==n-1 and V[i][j]!=q:
+        V[i][j]=V[i][j-1]+1
+        return V[i][j]
+    elif j==n-1:
+        V[i][j]=1
+        return V[i][j]
+    else:
+        V[i][j]=memoized(i+1,j,V,ctr)+memoized(i,j+1,V,ctr)
+        return V[i][j]
